@@ -4,9 +4,13 @@ var SongQueue = Songs.extend({
   initialize: function() {
     this.on('add',function(song){
       if(this.length === 1){
-        song.play();
+        this.playFirst();
       }
     },this);
+  },
+
+  playFirst: function(){
+    this.at(0).play();
   }
 
   // set up an "on change" event listener
