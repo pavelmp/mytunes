@@ -7,6 +7,16 @@ var SongQueue = Songs.extend({
         this.playFirst();
       }
     },this);
+
+    this.on('dequeue', function(song) {
+      this.remove(song);
+    });
+
+    this.on('ended', function(song) {
+      // console.log("song that triggered ended", song);
+      this.at(0).dequeue();
+    });
+
   },
 
   playFirst: function(){
