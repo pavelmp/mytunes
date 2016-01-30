@@ -14,7 +14,10 @@ var PlayerView = Backbone.View.extend({
   },
 
   render: function() {
+    var songModel = this.model;
+    $('audio').on('ended', function() {
+      songModel.ended();
+    });
     return this.$el.attr('src', this.model ? this.model.get('url') : '');
   }
-
 });
